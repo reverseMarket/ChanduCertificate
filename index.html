@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Trade Certificate - NCVT MIS Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & Yatra One for classic official look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Great+Vibes&family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
+  
+  <style>
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .certificate-container {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: 2px solid #8b6b23 !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm 6mm;
+      }
+    }
+
+    .font-serif-title {
+      font-family: 'Cinzel', serif;
+    }
+
+    .font-signature {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .barcode-font {
+      font-family: 'Libre Barcode 128 Text', cursive, monospace;
+      font-size: 38px;
+    }
+
+    /* Complex Security Certificate Border */
+    .cert-outer-border {
+      border: 6px double #6b4c16;
+      outline: 2px solid #c8a755;
+      outline-offset: -4px;
+    }
+
+    /* Guilloche patterned background */
+    .guilloche-bg {
+      background-color: #fdfdf9;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, rgba(240, 235, 215, 0.12) 100%),
+        repeating-linear-gradient(45deg, rgba(200, 160, 80, 0.02) 0px, rgba(200, 160, 80, 0.02) 2px, transparent 2px, transparent 8px),
+        repeating-linear-gradient(-45deg, rgba(200, 160, 80, 0.02) 0px, rgba(200, 160, 80, 0.02) 2px, transparent 2px, transparent 8px);
+    }
+
+    /* Subtle background watermark */
+    .watermark-overlay {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Realistic Distressed Ink Rubber Stamp */
+    .realistic-stamp {
+      position: relative;
+      color: #1e3a8a;
+      opacity: 0.88;
+      transform: rotate(-12deg);
+      mix-blend-mode: multiply;
+      filter: contrast(140%) drop-shadow(0 0.5px 0.5px rgba(30, 58, 138, 0.25));
+    }
+
+    /* Attestation stamp cutting across candidate photo */
+    .attest-half-stamp {
+      position: absolute;
+      bottom: -10px;
+      right: -24px;
+      transform: rotate(-22deg);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen py-4 sm:py-8 px-2 sm:px-6 flex flex-col items-center justify-center">
+
+  <!-- Main Certificate Paper (A4 Form Factor) -->
+  <main class="certificate-container guilloche-bg cert-outer-border relative w-full max-w-[890px] p-5 sm:p-8 shadow-xl rounded-sm text-slate-900 border-amber-900/60 overflow-hidden select-none bg-white">
+    
+    <!-- Watermark Artwork (Lion Emblem & Cog Wheel) -->
+    <div class="watermark-overlay flex items-center justify-center">
+      <svg viewBox="0 0 200 200" fill="currentColor" class="w-full h-full text-slate-900">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1"/>
+        <circle cx="100" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+        <g stroke="currentColor" stroke-width="1.5">
+          <line x1="100" y1="10" x2="100" y2="190" />
+          <line x1="10" y1="100" x2="190" y2="100" />
+          <line x1="36" y1="36" x2="164" y2="164" />
+          <line x1="36" y1="164" x2="164" y2="36" />
+          <line x1="17" y1="65" x2="183" y2="135" />
+          <line x1="17" y1="135" x2="183" y2="65" />
+          <line x1="65" y1="17" x2="135" y2="183" />
+          <line x1="135" y1="17" x2="65" y2="183" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Inner Golden Double Ribbon Border -->
+    <div class="border border-amber-800/40 p-4 sm:p-6 relative z-10">
+
+      <!-- Top Header Row: Emblem, Govt Title, Skill India Logo -->
+      <div class="flex items-center justify-between border-b-2 border-amber-900/30 pb-3 gap-2">
+        <!-- National Emblem Icon Silhouette -->
+        <div class="w-16 sm:w-20 flex-shrink-0 text-center">
+          <svg class="w-14 h-16 sm:w-16 sm:h-20 mx-auto text-amber-950" viewBox="0 0 100 130" fill="currentColor">
+            <g>
+              <path d="M50 8 C43 8 38 13 36 18 C33 16 28 17 26 21 C23 21 20 24 20 28 C20 35 25 40 30 42 C29 46 31 51 35 53 C35 56 37 60 41 62 C41 68 45 74 50 76 C55 74 59 68 59 62 C63 60 65 56 65 53 C69 51 71 46 70 42 C75 40 80 35 80 28 C80 24 77 21 74 21 C72 17 67 16 64 18 C62 13 57 8 50 8 Z" fill="#4a2810"/>
+              <rect x="25" y="77" width="50" height="12" rx="2" fill="#5c3818"/>
+              <circle cx="50" cy="83" r="5" fill="#fdfbf7" stroke="#3d220f" stroke-width="1.5"/>
+              <rect x="18" y="92" width="64" height="4" fill="#3d220f"/>
+              <text x="50" y="105" font-size="7.5" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle" fill="#3d220f">TRUTH ALONE TRIUMPHS</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Center Titles (English Only) -->
+      <div class="text-center flex-1 px-1">
+        <h2 class="text-xs sm:text-sm font-bold tracking-widest text-slate-800 uppercase font-serif-title">Government of India</h2>
+        <h3 class="text-[11px] sm:text-xs font-semibold tracking-wide text-slate-700 uppercase mt-0.5">Ministry of Skill Development and Entrepreneurship</h3>
+        <h4 class="text-xs sm:text-sm font-bold tracking-tight text-amber-950 uppercase mt-0.5">Directorate General of Training</h4>
+        
+        <div class="mt-2 pt-1 border-t-2 border-amber-900/25 inline-block">
+          <h1 class="text-base sm:text-2xl font-black tracking-wider text-red-950 uppercase font-serif-title">National Trade Certificate</h1>
+          <p class="text-[10px] sm:text-xs font-semibold tracking-wider text-amber-900 uppercase">National Council for Vocational Training</p>
+        </div>
+      </div>
+
+      <!-- Skill India & Technical Brand -->
+      <div class="w-16 sm:w-20 flex-shrink-0 flex flex-col items-center justify-center">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-amber-700 bg-white p-1 flex flex-col items-center justify-center shadow-sm">
+          <svg viewBox="0 0 100 100" class="w-10 h-10">
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#d97706" stroke-width="4" stroke-dasharray="6 3"/>
+            <circle cx="50" cy="50" r="16" fill="#047857"/>
+            <path d="M50 20 L53 32 L47 32 Z M50 80 L53 68 L47 68 Z M20 50 L32 53 L32 47 Z M80 50 L68 53 L68 47 Z" fill="#b45309"/>
+            <path d="M38 50 L46 58 L64 40" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-[7.5px] font-black uppercase text-amber-900 tracking-tight">Skill India</span>
+        </div>
+        <span class="text-[9px] font-bold text-slate-700 mt-1 uppercase">NCVT - DGT</span>
+      </div>
+    </div>
+
+    <!-- Candidate Photo, Top Meta Row & Modular QR Code -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 my-3 bg-amber-50/50 border border-amber-200/70 rounded p-3 text-xs">
+      <!-- Passport Profile Avatar -->
+      <div class="flex-shrink-0">
+        <div class="border-2 border-slate-400 bg-slate-50 p-1 rounded shadow-sm w-24 h-28 flex flex-col items-center justify-center overflow-hidden">
+          <svg class="w-16 h-16 text-slate-400 mt-1" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+          <span class="text-[8px] font-semibold text-slate-600 uppercase tracking-wider mt-1 bg-white px-2 py-0.5 rounded border border-slate-200">Candidate</span>
+        </div>
+      </div>
+
+      <!-- Registration & Certificate Details -->
+      <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2 w-full">
+        <div>
+          <span class="text-[10px] block text-slate-500 font-medium">Roll Number</span>
+          <span class="font-bold text-slate-900 text-sm tracking-wider font-mono">00250828033188</span>
+        </div>
+        <div>
+          <span class="text-[10px] block text-slate-500 font-medium">Certificate Issue Date</span>
+          <span class="font-bold text-slate-900 text-sm font-mono tracking-wide">10-Agu-2026</span>
+        </div>
+        <div>
+          <span class="text-[10px] block text-slate-500 font-medium">ITI Code</span>
+          <span class="font-bold text-slate-800 text-xs font-mono">PR28000374</span>
+        </div>
+        <div>
+          <span class="text-[10px] block text-slate-500 font-medium">Trade Code</span>
+          <span class="font-bold text-slate-800 text-xs font-mono">502</span>
+        </div>
+      </div>
+
+      <!-- Top QR Code (Easily replaceable via src attribute) -->
+      <div class="flex-shrink-0 flex flex-col items-center justify-center p-1.5 bg-white border border-slate-300 rounded shadow-sm">
+        <img 
+          id="certificate-qr-img"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=RollNo:00250828033188;Name:NASINA+CHANDRASEKHAR;Trade:Electrician;ITI:PR28000374" 
+          alt="Verification QR Code" 
+          class="w-20 h-20 object-contain rounded"
+          onerror="this.src='https://placehold.co/100x100/ffffff/000000?text=QR+Code';"
+        />
+        <span class="text-[8px] font-mono font-medium text-slate-600 mt-1 uppercase tracking-tight">Scan to Verify</span>
+      </div>
+    </div>
+
+    <!-- Candidate Main Declaration Block -->
+    <div class="my-3 text-[13px] sm:text-sm leading-relaxed text-slate-800 space-y-3 px-1">
+        
+        <p>
+          This is to certify that 
+          <span class="font-bold text-slate-950 uppercase border-b border-slate-700 px-2 py-0.5 inline-block text-sm sm:text-base tracking-wide bg-amber-50/60">
+            NASINA CHANDRASEKHAR
+          </span>
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 pt-1">
+          <p>
+            <span class="text-slate-500">Father's Name:</span> 
+            <span class="font-bold text-slate-900 uppercase">NASINA RAMAIAH</span>
+          </p>
+          <p>
+            <span class="text-slate-500">Date of Birth:</span> 
+            <span class="font-bold text-slate-900 font-mono">19-Dec-2007</span>
+          </p>
+        </div>
+
+        <div class="border-t border-slate-200 pt-2 space-y-2">
+          <p>
+            <span class="text-slate-500 font-medium">ITI Name:</span><br/>
+            <span class="font-bold text-slate-950 uppercase text-[13.5px]">Charith Private ITI (PR28000374)</span>
+          </p>
+          <p>
+            <span class="text-slate-500 font-medium">ITI Address:</span><br/>
+            <span class="font-medium text-slate-800 text-xs sm:text-[13px]">
+              Nellore, SRI POTTI SRIRAMULU NELLORE, ANDHRA PRADESH- 524004
+            </span>
+          </p>
+          <p>
+            <span class="text-slate-500 font-medium">Examination Center Address:</span><br/>
+            <span class="font-medium text-slate-800 text-xs sm:text-[13px]">
+              4058-GOVT ITI BOYS-NELLORE-GR28000145, OPP: F.C.I GODOWNS, VENKATESWARAPURAM, NELLORE-524005
+            </span>
+          </p>
+        </div>
+
+        <!-- Academic & Technical Grid Table -->
+        <div class="border border-slate-300 rounded overflow-hidden my-3 bg-white shadow-sm text-xs sm:text-[13px]">
+          <div class="grid grid-cols-2 sm:grid-cols-4 bg-amber-100/60 p-2 font-semibold text-slate-800 border-b border-slate-300 gap-1 text-[11px] sm:text-xs">
+            <div>Trade Name</div>
+            <div>Trade Code</div>
+            <div>Training Duration</div>
+            <div>NSQF Level</div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 p-2.5 font-bold text-slate-950 gap-1 border-b border-slate-200 text-xs sm:text-sm">
+            <div class="text-blue-900">Electrician (NSQF)</div>
+            <div class="font-mono">502</div>
+            <div>2024-2026</div>
+            <div>Level 4</div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 bg-slate-50 p-2 text-slate-700 gap-1 text-xs">
+            <div><span class="text-slate-500">Admission Year:</span> <strong class="font-semibold text-slate-900">2024</strong></div>
+            <div><span class="text-slate-500">Shift / Unit:</span> <strong class="font-semibold text-slate-900">Shift 1 / Unit 2</strong></div>
+            <div><span class="text-slate-500">Credits:</span> <strong class="font-semibold text-slate-900">N/A</strong></div>
+            <div><span class="text-slate-500">Certified:</span> <strong class="text-emerald-700 font-bold">Yes</strong></div>
+          </div>
+        </div>
+
+        <!-- Official Conferment Text -->
+        <p class="leading-normal pt-1 text-slate-800">
+          having completed the prescribed course of training and passed the examination, is hereby conferred this 
+          <strong class="text-amber-950 font-serif-title tracking-wide">National Trade Certificate</strong>.
+        </p>
+
+      </div>
+
+      <!-- Bottom Signatures & Stamp Area -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 items-center border-t-2 border-amber-900/20 mt-4 text-xs">
+        
+        <!-- Left: Issue Details & Controller Signature -->
+        <div class="space-y-1">
+          <p class="text-slate-600 text-xs">Issue Date: <span class="font-bold text-slate-900 font-mono">10-Agu-2026</span></p>
+          
+          <div class="pt-3">
+            <div class="font-signature text-2xl text-blue-950 leading-none select-none tracking-wide">P. Ramalingam</div>
+            <div class="border-t border-slate-300 w-36 mt-1 mb-0.5"></div>
+            <p class="font-semibold text-slate-900 text-xs">Controller of Examination</p>
+            <p class="text-[10px] text-slate-500">Directorate General of Training</p>
+          </div>
+        </div>
+
+        <!-- Center: Clean Realistic Institutional Rubber Stamp (Charith Private ITI) -->
+        <div class="flex flex-col items-center justify-center text-center my-2 sm:my-0">
+          <div class="w-32 h-32 flex items-center justify-center select-none" style="transform: rotate(-8deg);">
+            <svg viewBox="0 0 200 200" class="w-full h-full text-blue-900 drop-shadow-sm">
+              <defs>
+                <path id="circleTop" d="M 28,100 A 72,72 0 0,1 172,100" fill="none" />
+                <path id="circleBottom" d="M 172,100 A 72,72 0 0,1 28,100" fill="none" />
+              </defs>
+
+              <!-- Outer and Inner Rings -->
+              <circle cx="100" cy="100" r="92" fill="none" stroke="#1e3a8a" stroke-width="3" stroke-opacity="0.85" />
+              <circle cx="100" cy="100" r="86" fill="none" stroke="#1e3a8a" stroke-width="1.2" stroke-opacity="0.75" />
+              <circle cx="100" cy="100" r="56" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="4 2" stroke-opacity="0.8" />
+              
+              <!-- Curved Text -->
+              <text font-family="'Cinzel', serif" font-weight="800" font-size="12" fill="#1e3a8a" letter-spacing="1.5px">
+                <textPath href="#circleTop" startOffset="50%" text-anchor="middle">
+                  CHARITH PRIVATE ITI
+                </textPath>
+              </text>
+              
+              <text font-family="sans-serif" font-weight="700" font-size="9" fill="#1e3a8a" letter-spacing="1.2px">
+                <textPath href="#circleBottom" startOffset="50%" text-anchor="middle">
+                  NELLORE - 524004 (A.P.)
+                </textPath>
+              </text>
+
+              <!-- Center Text Block -->
+              <text x="100" y="93" font-family="monospace" font-size="11" font-weight="800" fill="#1e3a8a" text-anchor="middle" letter-spacing="1">
+                PR28000374
+              </text>
+              <line x1="60" y1="99" x2="140" y2="99" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.7"/>
+              <text x="100" y="112" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e3a8a" text-anchor="middle" letter-spacing="1">
+                INSTITUTE SEAL
+              </text>
+            </svg>
+          </div>
+          <span class="text-[9px] font-medium text-slate-500 mt-0.5">Institute Stamp</span>
+        </div>
+
+        <!-- Right: Principal Endorsement -->
+        <div class="flex flex-col items-start sm:items-end text-left sm:text-right space-y-1">
+          <div class="w-full max-w-[200px] sm:ml-auto">
+            <div class="font-signature text-2xl text-slate-800 leading-none text-left sm:text-right">S. N. Charitha</div>
+            <div class="border-t border-slate-300 w-full mt-1 mb-0.5"></div>
+            <p class="font-semibold text-slate-900 text-xs">Principal / In-Charge</p>
+            <p class="text-[10px] text-slate-500">Charith Private ITI</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Initialize Lucide Icons
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
